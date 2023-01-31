@@ -7,3 +7,17 @@
   font-size: 20px;
   font-weight: 600;
 }
+.header-links {
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+}
+.header-links div {
+  margin: 1rem;
+}
+.header-links a {
+  text-decoration: none;
+}
+.header-links a :hover {
+  background-color: brown;
+}
