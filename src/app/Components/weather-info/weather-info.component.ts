@@ -1,4 +1,6 @@
+import { Weather } from './../../Models/WeatherModel.model'
 import { Component, OnInit } from '@angular/core'
+import { WeatherData } from 'src/app/Models/WeatherModel.model'
 import { WeatherServicesService } from 'src/app/Services/weather-services.service'
 
 @Component({
@@ -7,13 +9,16 @@ import { WeatherServicesService } from 'src/app/Services/weather-services.servic
   styleUrls: ['./weather-info.component.css'],
 })
 export class WeatherInfoComponent implements OnInit {
-  city: string = ''
+  city: string = 'Kolkata'
+  weatherInfo: WeatherData | undefined
+  weatherDes: string = 'Haze'
   constructor(private service: WeatherServicesService) {}
 
   ngOnInit(): void {
-    this.service.getWeatherData('kolkata').subscribe({
+    this.service.getWeatherData(this.city).subscribe({
       next: (res) => {
-        console.log(res)
+        this.weatherInfo = res
+        console.log(this.weatherInfo)
       },
     })
   }
@@ -21,6 +26,8 @@ export class WeatherInfoComponent implements OnInit {
     this.service.getWeatherData(this.city).subscribe({
       next: (res) => {
         console.log(res)
+        this.weatherInfo = res
+        this.weatherDes = this.weatherInfo?.weather[0].main
       },
     })
   }

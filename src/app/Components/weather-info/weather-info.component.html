@@ -12,9 +12,49 @@
         </div>
         <div class="card card-container">
           <div class="card-header upper">
-            <img src="../../../assets/img/2256.jpg" alt="day" />
+            <div class="temp">
+              <p>{{ weatherInfo?.main?.temp }}</p>
+              <h1>&#8451;</h1>
+            </div>
+            <div class="location">
+              <h3>At {{ city }}</h3>
+            </div>
+            <div class="description">
+              <p>{{ weatherDes }}</p>
+            </div>
           </div>
-          <div class="card-body lower"></div>
+          <div class="card-body lower">
+            <div class="information">
+              <div>
+                <img
+                  src="https://img.icons8.com/arcade/48/null/hygrometer.png"
+                />
+                <p>{{ weatherInfo?.main?.humidity }}{{ ' ' }}&#37;</p>
+              </div>
+              <div>
+                <img src="https://img.icons8.com/fluency/48/null/wind.png" />
+                <p>{{ weatherInfo?.wind?.speed }}{{ ' ' }}kt</p>
+              </div>
+              <div>
+                <img
+                  src="https://img.icons8.com/fluency/48/null/happy-cloud.png"
+                />
+                <p>{{ weatherInfo?.clouds?.all }}{{ ' ' }}&#37;</p>
+              </div>
+              <div>
+                <img
+                  src="https://img.icons8.com/external-smashingstocks-flat-smashing-stocks/48/null/external-hot-weather-weather-smashingstocks-flat-smashing-stocks.png"
+                />
+                <p>{{ weatherInfo?.main?.temp_max }}{{ ' ' }}&#8451;</p>
+              </div>
+              <div>
+                <img
+                  src="https://img.icons8.com/fluency/48/null/thermometer-down.png"
+                />
+                <p>{{ weatherInfo?.main?.temp_min }}{{ ' ' }}&#8451;</p>
+              </div>
+            </div>
+          </div>
           <div class="card-footer card-footer"></div>
         </div>
       </div>

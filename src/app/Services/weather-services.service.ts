@@ -14,7 +14,11 @@ export class WeatherServicesService {
       headers: new HttpHeaders()
         .set(environment.XRapidAPIHost, environment.XRapidAPIHostValue)
         .set(environment.XRapidAPIKey, environment.XRapidAPIKeyValue),
-      params: new HttpParams().set('city', city),
+      params: new HttpParams()
+        .set('q', city)
+        .set('appid', 'da0f9c8d90bde7e619c3ec47766a42f4')
+        .set('appid', 'da0f9c8d90bde7e619c3ec47766a42f4')
+        .set('units', 'metric'),
     })
   }
 }
