@@ -1,0 +1,23 @@
+.canvas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input-field {
+  margin: 2rem;
+}
+.input-field input {
+  width: 600px;
+  border-radius: 1rem;
+  border: 1px black !important;
+  padding: 1rem;
+}
+.card-container {
+  width: 400px;
+  height: 80vh;
+}
+.upper {
+  position: relative;
+  overflow: hidden;
+  height: 40vh;
+}

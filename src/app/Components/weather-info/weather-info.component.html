@@ -1,0 +1,23 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="canvas py-5">
+        <div class="input-field">
+          <input
+            type="text"
+            placeholder="Please Type Name of the city"
+            [(ngModel)]="city"
+          />
+          <button class="btn btn-primary" (click)="fetchData()">Featch</button>
+        </div>
+        <div class="card card-container">
+          <div class="card-header upper">
+            <img src="../../../assets/img/2256.jpg" alt="day" />
+          </div>
+          <div class="card-body lower"></div>
+          <div class="card-footer card-footer"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
