@@ -11,14 +11,20 @@ import { WeatherServicesService } from 'src/app/Services/weather-services.servic
 export class WeatherInfoComponent implements OnInit {
   city: string = 'Kolkata'
   weatherInfo: WeatherData | undefined
-  weatherDes: string = 'Haze'
+  weatherDes: string = ''
+  icon: string = ''
+  iconurl: string = ''
   constructor(private service: WeatherServicesService) {}
-
   ngOnInit(): void {
     this.service.getWeatherData(this.city).subscribe({
       next: (res) => {
         this.weatherInfo = res
-        console.log(this.weatherInfo)
+        this.weatherDes = this.weatherInfo?.weather[0].main
+        this.iconurl =
+          'http://openweathermap.org/img/w/' +
+          this.weatherInfo?.weather[0].icon +
+          '.png'
+        console.log(this.iconurl)
       },
     })
   }

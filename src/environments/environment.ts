@@ -4,11 +4,12 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://openweather43.p.rapidapi.com/weather',
-  XRapidAPIKey: 'X-RapidAPI-Key',
-  XRapidAPIKeyValue: '2098454712msh117ee6475cd413fp104705jsn79a822207b21',
-  XRapidAPIHost: 'X-RapidAPI-Host',
-  XRapidAPIHostValue: 'openweather43.p.rapidapi.com',
+  baseUrl: 'https://api.openweathermap.org/data/2.5/weather',
+  appId: 'appid',
+  appIdValue: '86d9e8009e983c79aa93ebb71fa75922',
+
+  // variables for N-days weather fgorcasting
+  baseUrlForcast: 'api.openweathermap.org/data/2.5/forecast/daily',
 }
 
 /*
