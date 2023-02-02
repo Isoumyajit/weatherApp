@@ -4,6 +4,7 @@ import { WeatherInfoComponent } from './Components/weather-info/weather-info.com
 import { NgModule, Component } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
 
+/* This is the routing configuration for the application. */
 const routes: Routes = [
   {
     component: WeatherInfoComponent,
