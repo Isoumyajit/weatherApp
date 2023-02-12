@@ -1,40 +1,62 @@
-<div class="container justify-center items-center gap-1 py-32 bg-rose-300">
+<div
+  class="container justify-center items-center gap-1 py-32 bg-gradient-to-tr from-cyan-500 to-gray-100"
+>
   <div class="row grid justify-center items-center gap-1">
     <div class="flex justify-center items-center">
       <div class="canvas py-5 justify-center items-center">
         <div class="input-field justify-center flex gap-2">
           <input
-            class="rounded-lg p-2 w-96 h-10 outline-4 outline-transparent focus:outline-rose-500"
+            class="capitalize shadow-md shadow-cyan-500 rounded-lg p-2 w-full h-10 outline-4 outline-transparent focus:outline-rose-500"
             type="text"
             placeholder="Please Type Name of the city"
             [(ngModel)]="city"
           />
           <button
-            class="btn rounded-full bg-teal-500 text-white text-center w-fit h-auto p-2 hover:scale-105 duration-200 hover:bg-rose-500 hover:text-white"
+            class="btn rounded-full text-white text-center w-fit h-auto p-2 hover:scale-105 duration-200 hover:bg-rose-500 hover:text-white bg-teal-400"
             (click)="fetchData()"
           >
-            Featch
+            <img
+              src="https://img.icons8.com/ios-glyphs/30/null/search--v1.png"
+            />
           </button>
+        </div>
+        <div
+          class="m-5 p-5 mx-auto bg-gray-300 shadow-md shadow-zinc-400 rounded-md"
+        >
+          <ul class="flex felx-row gap-5">
+            <li *ngFor="let cities of quickSearch">
+              <button
+                class="text-black hover:text-rose-500"
+                (click)="fetchData(cities.city)"
+              >
+                {{ cities.city }}
+              </button>
+            </li>
+          </ul>
         </div>
 
         <div
-          class="card card-container rounded-md shadow-md shadow-gray-500 flex flex-col mt-10 gap-2 mx-auto border-4 border-amber-500 bg-teal-300"
+          class="card card-container rounded-md shadow-md shadow-gray-500 flex flex-col mt-10 gap-2 mx-auto border-4 border-amber-500 bg-gradient-to-br from-teal-200 to-gray-100"
         >
           <div
-            class="backdrop-blur-sm p-3 rounded-md card-header upper flex flex-col gap-2 flex-start m-5 bg-gray-500"
+            class="max-w-screen-lg p-3 rounded-md card-header upper flex flex-col gap-2 flex-start m-5 justify-center items-center"
           >
-            <div class="temp flex gap-2">
+            <div>
+              <app-timeandlocation [city]="city"></app-timeandlocation>
+            </div>
+            <div class="temp flex gap-2 text-black">
               <p class="text-4xl font-bold">{{ weatherInfo?.main?.temp }}</p>
-              <div class="flex gap-1 items-center justify-center">
+              <div class="flex gap-2 items-center justify-center">
                 <button
-                  class="text-white text-lg text-center hover:scale-105 duration-100"
-                  onclick=""
+                  class="w-10 h-auto text-lg p-1 rounded-full border-2 border-red-500 text-center hover:scale-105 duration-100 bg-rose-400"
+                  (click)="fetchData(city)"
                 >
-                  &#8451;<span class="text-lg text-black"> | </span>
+                  &#8451;
                 </button>
+                <span class="text-lg text-black"> | </span>
                 <button
-                  class="text-white text-lg text-center hover:scale-105 duration-100"
-                  onclick=""
+                  class="w-10 h-auto text-lg p-1 rounded-full border-2 border-red-500 text-center hover:scale-105 duration-100 bg-rose-400"
+                  (click)="fetchData(city, 'F')"
                 >
                   &#8457;
                 </button>
@@ -73,13 +95,27 @@
                 <img
                   src="https://img.icons8.com/external-smashingstocks-flat-smashing-stocks/48/null/external-hot-weather-weather-smashingstocks-flat-smashing-stocks.png"
                 />
-                <p>{{ weatherInfo?.main?.temp_max }}{{ " " }}&#8451;</p>
+                <p *ngIf="type; else farhenheight">
+                  {{ weatherInfo?.main?.temp_max }}{{ " " }}&#8451;
+                </p>
+                <ng-template #farhenheight
+                  ><p>
+                    {{ weatherInfo?.main?.temp_max }}{{ " " }} &#8457;
+                  </p></ng-template
+                >
               </div>
               <div class="flex flex-col justify-center items-center">
                 <img
                   src="https://img.icons8.com/fluency/48/null/thermometer-down.png"
                 />
-                <p>{{ weatherInfo?.main?.temp_min }}{{ " " }}&#8451;</p>
+                <p *ngIf="type; else farhenheight2">
+                  {{ weatherInfo?.main?.temp_min }}{{ " " }}&#8451;
+                </p>
+                <ng-template #farhenheight2
+                  ><p>
+                    {{ weatherInfo?.main?.temp_min }}{{ " " }} &#8457;
+                  </p></ng-template
+                >
               </div>
               <div class="flex flex-col justify-center items-center">
                 <img

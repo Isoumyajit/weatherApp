@@ -9,12 +9,20 @@ import { environment } from 'src/environments/environment';
 })
 export class WeatherServicesService {
   constructor(private http: HttpClient) {}
-  getWeatherData(city: string): Observable<WeatherData> {
-    return this.http.get<WeatherData>(environment.baseUrl, {
-      params: new HttpParams()
-        .set('q', city)
-        .set(environment.appId, environment.appIdValue)
-        .set('units', 'metric'),
-    });
+  getWeatherData(city: string, type: string = 'C'): Observable<WeatherData> {
+    if (type === 'C') {
+      return this.http.get<WeatherData>(environment.baseUrl, {
+        params: new HttpParams()
+          .set('q', city)
+          .set(environment.appId, environment.appIdValue)
+          .set('units', 'metric'),
+      });
+    } else {
+      return this.http.get<WeatherData>(environment.baseUrl, {
+        params: new HttpParams()
+          .set('q', city)
+          .set(environment.appId, environment.appIdValue),
+      });
+    }
   }
 }
