@@ -1,11 +1,9 @@
-.canvas {
+/* .canvas {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.input-field {
-  margin: 2rem;
-}
+
 .input-field input {
   width: 600px;
   border-radius: 1rem;
@@ -44,7 +42,7 @@
 }
 
 /* lower body */
-.information {
+/* .information {
   position: inherit;
   display: grid;
   grid-gap: 1rem;
@@ -56,16 +54,4 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-.description {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: baseline;
-  margin: 10px;
-}
-.description img {
-  margin-left: 1rem;
-  margin-bottom: 1rem;
 }
