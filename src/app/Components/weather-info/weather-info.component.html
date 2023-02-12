@@ -1,18 +1,26 @@
-<div class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="canvas py-5">
-        <div class="input-field">
+<div class="container justify-center items-center gap-1 py-32">
+  <div class="row grid justify-center items-center gap-1">
+    <div class="flex justify-center items-center">
+      <div class="canvas py-5 justify-center items-center">
+        <div class="input-field justify-center flex gap-2">
           <input
+            class="rounded-full p-2 w-96 h-10 outline-4 outline-transparent focus:outline-rose-500"
             type="text"
             placeholder="Please Type Name of the city"
             [(ngModel)]="city"
           />
-          <button class="btn btn-primary" (click)="fetchData()">Featch</button>
+          <button
+            class="btn rounded-full bg-teal-500 text-white text-center w-fit h-auto p-2 hover:scale-105 duration-200 hover:bg-rose-500 hover:text-white"
+            (click)="fetchData()"
+          >
+            Featch
+          </button>
         </div>
 
-        <div class="card card-container">
-          <div class="card-header upper">
+        <div
+          class="card card-container flex flex-col mt-10 gap-2 mx-auto border-4 border-dotted border-black"
+        >
+          <div class="card-header upper flex flex-col gap-2 flex-start m-5">
             <div class="temp">
               <p>{{ weatherInfo?.main?.temp }}</p>
               <h1>&#8451;</h1>
@@ -24,37 +32,37 @@
               <p>{{ weatherDes }}</p>
             </div>
           </div>
-          <div class="card-body lower">
-            <div class="information">
-              <div>
+          <div class="card-body lower mt-10 border-2 border-black p-3 m-5">
+            <div class="information grid grid-cols-3 gap-8">
+              <div class="flex flex-col justify-center items-center">
                 <img
                   src="https://img.icons8.com/arcade/48/null/hygrometer.png"
                 />
-                <p>{{ weatherInfo?.main?.humidity }}{{ ' ' }}&#37;</p>
+                <p>{{ weatherInfo?.main?.humidity }}{{ " " }}&#37;</p>
               </div>
-              <div>
+              <div class="flex flex-col justify-center items-center">
                 <img src="https://img.icons8.com/fluency/48/null/wind.png" />
-                <p>{{ weatherInfo?.wind?.speed }}{{ ' ' }}kt</p>
+                <p>{{ weatherInfo?.wind?.speed }}{{ " " }}kt</p>
               </div>
-              <div>
+              <div class="flex flex-col justify-center items-center">
                 <img
                   src="https://img.icons8.com/fluency/48/null/happy-cloud.png"
                 />
-                <p>{{ weatherInfo?.clouds?.all }}{{ ' ' }}&#37;</p>
+                <p>{{ weatherInfo?.clouds?.all }}{{ " " }}&#37;</p>
               </div>
-              <div>
+              <div class="flex flex-col justify-center items-center">
                 <img
                   src="https://img.icons8.com/external-smashingstocks-flat-smashing-stocks/48/null/external-hot-weather-weather-smashingstocks-flat-smashing-stocks.png"
                 />
-                <p>{{ weatherInfo?.main?.temp_max }}{{ ' ' }}&#8451;</p>
+                <p>{{ weatherInfo?.main?.temp_max }}{{ " " }}&#8451;</p>
               </div>
-              <div>
+              <div class="flex flex-col justify-center items-center">
                 <img
                   src="https://img.icons8.com/fluency/48/null/thermometer-down.png"
                 />
-                <p>{{ weatherInfo?.main?.temp_min }}{{ ' ' }}&#8451;</p>
+                <p>{{ weatherInfo?.main?.temp_min }}{{ " " }}&#8451;</p>
               </div>
-              <div>
+              <div class="flex flex-col justify-center items-center">
                 <img
                   src="https://img.icons8.com/office/48/null/air-quality.png"
                 />
