@@ -26,14 +26,23 @@
             <div class="temp flex gap-2">
               <p class="text-4xl font-bold">{{ weatherInfo?.main?.temp }}</p>
               <div class="flex gap-1 items-center justify-center">
-                <button class="text-white text-lg" onclick="">
-                  &#8451;<span class="text-2xl text-black"> | </span>
+                <button
+                  class="text-white text-lg text-center hover:scale-105 duration-100"
+                  onclick=""
+                >
+                  &#8451;<span class="text-lg text-black"> | </span>
                 </button>
-                <button class="text-white text-lg" onclick="">&#8457;</button>
+                <button
+                  class="text-white text-lg text-center hover:scale-105 duration-100"
+                  onclick=""
+                >
+                  &#8457;
+                </button>
               </div>
             </div>
-            <div class="location">
-              <h3>At {{ city }}</h3>
+            <div class="location flex gap-2 items-center">
+              <p>At</p>
+              <p class="text-2xl font-semibold">{{ city }}</p>
             </div>
             <div class="description">
               <p>{{ weatherDes }}</p>
