@@ -10,11 +10,7 @@ export const environment = {
 
   // variables for N-days weather fgorcasting
   baseUrlForcast: 'api.openweathermap.org/data/2.5/forecast/daily',
-<<<<<<< HEAD
-}
-=======
 };
->>>>>>> testing_tailwind
 
 /*
  * For easier debugging in development mode, you can import the following file
