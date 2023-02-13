@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TimezoneapiserviceService } from 'src/app/Services/timezoneapiservice.service';
 import { TimeZone } from 'src/app/Models/Timezone.model';
 
@@ -9,7 +9,8 @@ import { TimeZone } from 'src/app/Models/Timezone.model';
 })
 export class TimeandlocationComponent implements OnInit {
   @Input() city = '';
-  @Output() region = '';
+  @Output() notify: EventEmitter<TimeZone> = new EventEmitter<TimeZone>();
+  // ampm: string = 'AM';
   localtime: string = '';
   month: string = '';
   day: string = '';
@@ -32,6 +33,7 @@ export class TimeandlocationComponent implements OnInit {
   ngOnInit(): void {
     this.service.getTimeZone(this.city).subscribe({
       next: (res) => {
+        this.notify.emit(res);
         this.localtime = res?.location.localtime;
         let timestamp = this.localtime.split(' ');
         let date = timestamp[0];
@@ -39,12 +41,17 @@ export class TimeandlocationComponent implements OnInit {
         this.localtime = timestamp[1];
         this.day = date.split('-')[2];
         this.year = date.split('-')[0];
+        // this.localtime >= '12' ? (this.ampm = 'PM') : (this.ampm = 'AM');
+      },
+      error: (err) => {
+        console.log(err);
       },
     });
   }
   ngOnChanges(): void {
     this.service.getTimeZone(this.city).subscribe({
       next: (res) => {
+        this.notify.emit(res);
         this.localtime = res?.location.localtime;
         let timestamp = this.localtime.split(' ');
         let date = timestamp[0];
@@ -52,6 +59,10 @@ export class TimeandlocationComponent implements OnInit {
         this.localtime = timestamp[1];
         this.day = date.split('-')[2];
         this.year = date.split('-')[0];
+        // this.localtime >= '12:00' ? (this.ampm = 'PM') : (this.ampm = 'AM');
+      },
+      error: (err) => {
+        console.log(err);
       },
     });
   }

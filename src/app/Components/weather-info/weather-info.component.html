@@ -36,13 +36,18 @@
         </div>
 
         <div
-          class="card card-container rounded-md shadow-md shadow-gray-500 flex flex-col mt-10 gap-2 mx-auto border-4 border-amber-500 bg-gradient-to-br from-teal-200 to-gray-100"
+          class="{`bg-grad card card-container rounded-md shadow-md shadow-gray-500 flex flex-col mt-10 gap-2 mx-auto border-4 border-amber-500 {{
+            formatBackgroundColor()
+          }}`}"
         >
           <div
             class="max-w-screen-lg p-3 rounded-md card-header upper flex flex-col gap-2 flex-start m-5 justify-center items-center"
           >
             <div>
-              <app-timeandlocation [city]="city"></app-timeandlocation>
+              <app-timeandlocation
+                (notify)="getDataFromChild($event)"
+                [city]="city"
+              ></app-timeandlocation>
             </div>
             <div class="temp flex gap-2 text-black">
               <p class="text-4xl font-bold">{{ weatherInfo?.main?.temp }}</p>
@@ -62,13 +67,21 @@
                 </button>
               </div>
             </div>
-            <div class="location flex gap-2 items-center">
-              <p>At</p>
+            <div class="location flex flex-col gap-2 items-center">
               <p class="text-2xl font-semibold">{{ city }}</p>
+              <p>
+                {{
+                  timezone?.location?.country +
+                    " | " +
+                    timezone?.location?.region
+                }}
+              </p>
             </div>
-            <div class="description">
-              <p>{{ weatherDes }}</p>
-              <img src="{{ iconurl }}" alt="Weather icon" />
+            <div
+              class="flex flex-col description justify-center items-center mx-auto"
+            >
+              <p class="text-blue-500 font-bold">{{ weatherDes }}</p>
+              <img class="h-20 w-20" src="{{ iconurl }}" alt="Weather icon" />
             </div>
           </div>
           <div

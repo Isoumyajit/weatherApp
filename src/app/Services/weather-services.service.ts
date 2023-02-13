@@ -21,7 +21,8 @@ export class WeatherServicesService {
       return this.http.get<WeatherData>(environment.baseUrl, {
         params: new HttpParams()
           .set('q', city)
-          .set(environment.appId, environment.appIdValue),
+          .set(environment.appId, environment.appIdValue)
+          .set('units', 'imperial'),
       });
     }
   }

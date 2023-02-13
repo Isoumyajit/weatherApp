@@ -1,5 +1,6 @@
 import { Weather } from './../../Models/WeatherModel.model';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { TimeZone } from 'src/app/Models/Timezone.model';
 import { WeatherData } from 'src/app/Models/WeatherModel.model';
 import { WeatherServicesService } from 'src/app/Services/weather-services.service';
 
@@ -15,6 +16,7 @@ export class WeatherInfoComponent implements OnInit {
   icon: string = '';
   iconurl: string = '';
   type: boolean = true;
+  timezone: TimeZone | undefined;
   quickSearch: any = [
     {
       id: 1,
@@ -72,5 +74,23 @@ export class WeatherInfoComponent implements OnInit {
           '.png';
       },
     });
+  }
+
+  formatBackgroundColor() {
+    if (this.weatherInfo?.weather[0].main === 'Clear') {
+      return 'bg-gradient-to-bt from-cyan-500 to-gray-100';
+    } else if (this.weatherInfo?.weather[0].main === 'Hot')
+      return 'bg-gradient-to-br from-orange-500 to-gray-100';
+    else if (
+      this.weatherInfo?.weather[0].main === 'Rain' ||
+      this.weatherInfo?.weather[0].main === 'Clouds'
+    ) {
+      return 'bg-gradient-to-br from-gray-500 to-gray-50';
+    } else if (this.weatherInfo?.weather[0].main === 'Haze') {
+      return 'bg-gradient-to-br from-gray-200 to-white';
+    } else return 'bg-gradient-to-br from-gray-100 to-white';
+  }
+  getDataFromChild(childData: TimeZone) {
+    this.timezone = childData;
   }
 }
