@@ -65,7 +65,9 @@ export class WeatherInfoComponent implements OnInit {
     else this.type = true;
     this.service.getWeatherData(props, type).subscribe({
       next: (res) => {
-        this.city = props;
+        this.city = props.indexOf(',') ? props.split(',')[0] : props;
+        console.log(this.city);
+
         this.weatherInfo = res;
         this.weatherDes = this.weatherInfo?.weather[0].main;
         this.iconurl =
